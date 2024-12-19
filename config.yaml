@@ -1,0 +1,37 @@
+cluster:
+  api_url: ""  # OpenShift API URL
+  token: ""    # OpenShift API token
+  verify_ssl: false  # Allow self-signed certificates
+
+monitoring:
+  interval: 300  # Monitoring interval in seconds
+  metrics:
+    - cpu_usage
+    - memory_usage
+    - network_io
+    - disk_io
+    - etcd_health
+    - api_response_time
+
+thresholds:
+  cpu_warning: 80
+  cpu_critical: 90
+  memory_warning: 85
+  memory_critical: 95
+  pod_restart_threshold: 5
+  certificate_expiry_warning_days: 30
+
+reporting:
+  format: "console"
+  retention_days: 30
+  alert_notifications: true
+  email_notifications:
+    enabled: false
+    smtp_server: ""
+    smtp_port: 587
+    sender: ""
+    recipients: []
+
+security:
+  read_only: true
+  verify_permissions: true

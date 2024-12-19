@@ -1,0 +1,29 @@
+# k8s-inspector License
+
+Copyright (c) 2024 Erling Kristiansen, EGK AS (org.nr. 926861581)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to use, copy, modify, merge, publish, and distribute the Software, subject to the following conditions:
+
+1. **Open Source Usage**:
+   - This Software is provided under an open-source license for **non-commercial use only**. Non-commercial use includes personal projects, academic purposes, and contributions to the open-source community.
+   - Any modifications or derivatives of this Software must retain this license notice and attribution to the original author, Erling Kristiansen, and the company, EGK AS.
+
+2. **Restrictions on Commercial Use**:
+   - Commercial use of this Software is **prohibited** without obtaining a valid commercial license from EGK AS.
+   - Commercial use includes, but is not limited to:
+     - Using the Software in proprietary, closed-source, or revenue-generating projects.
+     - Offering the Software as part of a service, product, or platform for sale, subscription, or licensing.
+     - Using the Software in enterprise or organizational environments for production purposes.
+
+3. **Obtaining a Commercial License**:
+   - To use this Software for commercial purposes, you must contact EGK AS to obtain a commercial license. For inquiries, please visit the project's GitHub repository: [https://github.com/egkristi/k8s-inspector](https://github.com/egkristi/k8s-inspector) or email [your email/contact address].
+   - Commercial licenses are subject to fees and terms agreed upon between you and EGK AS.
+
+4. **Disclaimer**:
+   - THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT, OR OTHERWISE, ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+---
+
+By using this Software, you agree to abide by the terms of this license.
+
+For more information about the project or licensing terms, visit the repository: [https://github.com/egkristi/k8s-inspector](https://github.com/egkristi/k8s-inspector).
