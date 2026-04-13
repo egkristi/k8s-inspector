@@ -34,6 +34,7 @@ nav:
     - Security Compliance: analyzers/security.md
     - Performance & ML: analyzers/performance.md
   - Auto-Remediation: playbooks.md
+  - API Reference: api.md
 
 markdown_extensions:
   - admonition
