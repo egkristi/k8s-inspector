@@ -41,8 +41,11 @@ Access:
 ### 🧠 AI-Powered Root Cause Analysis
 Not just "Pod is crashing" — but *why*, and *how to fix it*.
 
-### 💰 Intelligent Cost Optimization
-Real savings recommendations, not just charts.
+### 💰 Intelligent Cost Optimization & GreenOps
+Real savings recommendations, automated rightsizing (GitOps PRs), and eBPF-powered carbon/power tracking.
+
+### 🤖 Agentic AI & ChatOps
+Opt-in LLM integration to explain complex failures (OOMKilled, CrashLoops) or cost spikes in plain English.
 
 ### 🔮 Predictive Failure Detection
 Fix problems before they happen with ML-powered anomaly detection.
@@ -108,7 +111,11 @@ One dashboard, unlimited clusters.
 - [ ] Cost analyzer engine
 - [ ] Security analyzer (CIS)
 - [ ] ML anomaly detection
-- [ ] Auto-remediation playbooks
+- [x] Auto-remediation playbooks
+- [ ] GitOps FinOps (Auto-PR generation for rightsizing)
+- [ ] eBPF & Kepler Integration for GreenOps (Watt & CO2)
+- [ ] Agentic AI Cost Explainer (LLM integration)
+- [ ] Advanced Bare-Metal Pricing (Depreciation & Spot prices)
 
 ---
 
