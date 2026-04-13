@@ -5,6 +5,9 @@
 
 [![License: AGPLv3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://opensource.org/licenses/AGPL-3.0)
 [![GitHub stars](https://img.shields.io/github/stars/egkristi/k8s-inspector.svg)](https://github.com/egkristi/k8s-inspector/stargazers)
+[![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-brightgreen)](https://egkristi.github.io/k8s-inspector/)
+
+📚 **[Read the full documentation here](https://egkristi.github.io/k8s-inspector/)**
 
 ---
 
