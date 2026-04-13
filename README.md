@@ -56,6 +56,21 @@ CIS benchmarks, NSA/CISA guidelines — with one-click remediation.
 ### 🌐 Multi-Cluster Federated View
 One dashboard, unlimited clusters.
 
+## 🥊 k8s-inspector vs. Alternatives
+
+The Kubernetes tooling ecosystem is fragmented. You usually need one tool for cost, one for security, and another for monitoring. **k8s-inspector unifies them and adds automated remediation.**
+
+| Capability | 🐦‍⬛ k8s-inspector | Kubecost | Datadog | Robusta | Lens / K9s |
+|------------|----------------|----------|---------|---------|------------|
+| **Cost & Waste Analysis** | ✅ Yes | ✅ Yes | ✅ Yes ($$) | ❌ No | ❌ No |
+| **GreenOps (Watt/CO2)** | ✅ Yes (eBPF) | ❌ No | ❌ No | ❌ No | ❌ No |
+| **Security Auditing** | ✅ Yes | ❌ No | ✅ Yes | ❌ No | ❌ No |
+| **Auto-Remediation** | ✅ Yes (Playbooks) | ❌ No | ❌ No | ✅ Yes | ❌ No |
+| **GitOps Auto-PRs** | ✅ Yes | ❌ No | ❌ No | ❌ No | ❌ No |
+| **Predictive ML** | ✅ Yes | ❌ No | ✅ Yes | ❌ No | ❌ No |
+| **Agentic AI Chat** | ✅ Yes (Opt-in) | ❌ No | ✅ Yes (SaaS) | ✅ Yes | ❌ No |
+| **Delivery Model** | Open Source (AGPLv3) | Open Core | SaaS Only | Open Source | Open Core |
+
 ---
 
 ## 🏗️ Architecture
