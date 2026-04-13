@@ -1,0 +1,53 @@
+🐦‍⬛ Thank you for installing k8s-inspector 2.0!
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📊 Your Intelligent Kubernetes Inspector is now deploying...
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🔗 Access the Dashboard:
+
+{{- if .Values.frontend.ingress.enabled }}
+  http{{ if $.Values.frontend.ingress.tls }}s{{ end }}://{{ (index .Values.frontend.ingress.hosts 0).host }}
+{{- else }}
+  kubectl port-forward svc/{{ include "k8s-inspector.fullname" . }}-frontend 3000:80
+  Then open: http://localhost:3000
+{{- end }}
+
+📡 API Endpoint:
+
+{{- if .Values.frontend.ingress.enabled }}
+  http{{ if $.Values.frontend.ingress.tls }}s{{ end }}://{{ (index .Values.frontend.ingress.hosts 0).host }}/api/v2
+{{- else }}
+  kubectl port-forward svc/{{ include "k8s-inspector.fullname" . }}-backend 8000:8000
+  API docs: http://localhost:8000/docs
+{{- end }}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+🚀 Quick Start:
+
+1. Register your first cluster:
+   curl -X POST http://localhost:8000/api/v2/clusters \
+     -H "Content-Type: application/json" \
+     -d '{"name":"my-cluster","kubeconfig_secret":"..."}'
+
+2. View real-time insights:
+   Open the dashboard and watch insights appear!
+
+3. Configure alerts (optional):
+   Edit the ConfigMap to add Slack/Teams webhooks
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📚 Documentation: https://k8s-inspector.dev/docs
+💬 Community: https://discord.gg/k8s-inspector
+🐛 Issues: https://github.com/egkristi/k8s-inspector/issues
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+⭐ If you find k8s-inspector useful, please star us on GitHub!
+   https://github.com/egkristi/k8s-inspector
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

@@ -1,0 +1,174 @@
+# Default values for k8s-inspector
+# This is a YAML-formatted file.
+
+# Global settings
+global:
+  imageRegistry: ""
+  storageClass: ""
+
+# Backend configuration
+backend:
+  replicaCount: 1
+  image:
+    repository: ghcr.io/egkristi/k8s-inspector/backend
+    tag: "2.0.0"
+    pullPolicy: IfNotPresent
+  
+  resources:
+    limits:
+      cpu: 500m
+      memory: 512Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+  
+  # Environment variables
+  env:
+    DEBUG: "false"
+    CLUSTER_POLL_INTERVAL_SECONDS: "30"
+    ANOMALY_DETECTION_ENABLED: "true"
+  
+  # Service configuration
+  service:
+    type: ClusterIP
+    port: 8000
+
+# Frontend configuration
+frontend:
+  replicaCount: 1
+  image:
+    repository: ghcr.io/egkristi/k8s-inspector/frontend
+    tag: "2.0.0"
+    pullPolicy: IfNotPresent
+  
+  resources:
+    limits:
+      cpu: 250m
+      memory: 256Mi
+    requests:
+      cpu: 50m
+      memory: 64Mi
+  
+  service:
+    type: ClusterIP
+    port: 80
+  
+  ingress:
+    enabled: true
+    className: "nginx"
+    annotations: {}
+    hosts:
+      - host: k8s-inspector.local
+        paths:
+          - path: /
+            pathType: Prefix
+    tls: []
+
+# PostgreSQL configuration (embedded)
+postgresql:
+  enabled: true
+  image:
+    repository: timescale/timescaledb
+    tag: latest-pg16
+  auth:
+    postgresPassword: "k8s-inspector-password"  # Change in production!
+    database: k8s_inspector
+  persistence:
+    enabled: true
+    size: 10Gi
+  resources:
+    limits:
+      cpu: 500m
+      memory: 512Mi
+    requests:
+      cpu: 100m
+      memory: 128Mi
+
+# Redis configuration (embedded)
+redis:
+  enabled: true
+  image:
+    repository: redis
+    tag: 7-alpine
+  architecture: standalone
+  auth:
+    enabled: false
+  persistence:
+    enabled: true
+    size: 2Gi
+  resources:
+    limits:
+      cpu: 200m
+      memory: 256Mi
+    requests:
+      cpu: 50m
+      memory: 64Mi
+
+# TimescaleDB configuration for metrics
+timescaledb:
+  enabled: true
+  hypertable_retention_days: 30
+
+# ML/Analytics configuration
+ml:
+  enabled: true
+  anomalyDetection:
+    enabled: true
+    baselineDays: 7
+    sensitivity: 0.8  # 0-1, higher = more sensitive
+  prediction:
+    enabled: true
+    horizonHours: 24
+
+# Cost analysis configuration
+cost:
+  enabled: true
+  cloudPricingApi: true
+  currency: USD
+  updateIntervalHours: 24
+
+# Security scanning configuration
+security:
+  enabled: true
+  cisBenchmarks: true
+  nsaCisaGuidelines: true
+  customPolicies: []
+
+# Alerting configuration
+alerting:
+  enabled: true
+  cooldownMinutes: 15
+  maxPerHour: 50
+  
+  # Integrations
+  slack:
+    enabled: false
+    webhookUrl: ""
+  teams:
+    enabled: false
+    webhookUrl: ""
+
+# Monitoring configuration
+monitoring:
+  serviceMonitor:
+    enabled: false
+    namespace: ""
+  prometheusRules:
+    enabled: false
+
+# Resource quotas
+resourceQuotas:
+  enabled: false
+  maxCpu: "4"
+  maxMemory: "8Gi"
+  maxPods: 50
+
+# Network policies
+networkPolicies:
+  enabled: false
+
+# Pod security standards
+podSecurity:
+  enforce: "baseline"
+  audit: "restricted"
+  warn: "restricted"

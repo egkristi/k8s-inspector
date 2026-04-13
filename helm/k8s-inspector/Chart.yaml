@@ -1,0 +1,39 @@
+apiVersion: v2
+name: k8s-inspector
+description: The Intelligent Kubernetes Inspector - Not just monitoring, understanding
+type: application
+version: 2.0.0
+appVersion: "2.0.0"
+keywords:
+  - kubernetes
+  - monitoring
+  - cost-optimization
+  - security
+  - ai
+  - ml
+  - insights
+home: https://github.com/egkristi/k8s-inspector
+sources:
+  - https://github.com/egkristi/k8s-inspector
+maintainers:
+  - name: Erling G M Kristiansen
+    email: egkristi@gmail.com
+    url: https://github.com/egkristi
+icon: https://raw.githubusercontent.com/egkristi/k8s-inspector/main/docs/logo.png
+annotations:
+  artifacthub.io/links: |
+    - name: Documentation
+      url: https://k8s-inspector.dev/docs
+    - name: Discord Community
+      url: https://discord.gg/k8s-inspector
+  artifacthub.io/changes: |
+    - kind: added
+      description: Initial release of k8s-inspector 2.0
+    - kind: added
+      description: AI-powered root cause analysis
+    - kind: added
+      description: Cost optimization engine
+    - kind: added
+      description: Security compliance checker (CIS benchmarks)
+    - kind: added
+      description: Predictive failure detection
