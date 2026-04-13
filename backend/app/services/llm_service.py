@@ -35,6 +35,49 @@ class AgenticAIService:
             logger.error(f"Failed to generate LLM explanation: {e}")
             return {"status": "error", "message": str(e)}
 
+    async def explain_cost_anomaly(self, anomaly_context: Dict[str, Any], cluster_events: list) -> Dict[str, str]:
+        """
+        Takes a cost anomaly context and asks the LLM to explain why the cost spiked.
+        """
+        if not self.enabled:
+            return {"status": "skipped", "message": "LLM Integration is disabled."}
+
+        prompt = f"""
+        You are an expert Kubernetes FinOps analyst. Analyze the following cost anomaly and provide a plain-English explanation for business stakeholders.
+        
+        Anomaly Details:
+        {json.dumps(anomaly_context, indent=2)}
+        
+        Recent Cluster Events (Scale-ups, Spot terminations, etc):
+        {json.dumps(cluster_events, indent=2)}
+        
+        Provide a short 2-3 sentence explanation of why the cost increased, and one actionable recommendation.
+        """
+        
+        try:
+            explanation = await self._call_llm(prompt)
+            return {"status": "success", "explanation": explanation}
+        except Exception as e:
+            logger.error(f"Failed to generate LLM cost explanation: {e}")
+            return {"status": "error", "message": str(e)}
+        """Constructs a context-rich prompt for the LLM."""
+        return f"""
+        You are an expert Kubernetes reliability engineer. Analyze the following failure context and provide a concise, plain-English explanation of the root cause, followed by a concrete recommendation to fix it.
+
+        Resource: {context.get('kind', 'Unknown')} {context.get('name', 'Unknown')} in namespace {context.get('namespace', 'default')}
+        Status: {context.get('status', 'Unknown')}
+
+        Recent Events:
+        {json.dumps(events, indent=2)}
+
+        Recent Logs:
+        {logs[-2000:]}  # Last 2000 chars
+
+        Format your response as:
+        1. Root Cause Analysis
+        2. Recommended Fix
+        """
+
     def _build_prompt(self, context: Dict[str, Any], logs: str, events: list) -> str:
         """Constructs a context-rich prompt for the LLM."""
         return f"""
