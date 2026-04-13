@@ -1,0 +1,45 @@
+site_name: k8s-inspector 2.0
+site_description: The Intelligent Kubernetes Inspector
+site_author: Erling G M Kristiansen
+repo_url: https://github.com/egkristi/k8s-inspector
+repo_name: egkristi/k8s-inspector
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+  palette:
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: indigo
+    # Light mode (fallback)
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: black
+      accent: indigo
+
+nav:
+  - Home: index.md
+  - Getting Started: getting-started.md
+  - Architecture: architecture.md
+  - Analyzers:
+    - Cost Optimization: analyzers/cost.md
+    - Security Compliance: analyzers/security.md
+    - Performance & ML: analyzers/performance.md
+  - Auto-Remediation: playbooks.md
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
