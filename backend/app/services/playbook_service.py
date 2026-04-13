@@ -19,7 +19,10 @@ class PlaybookService:
         self._load_playbooks()
         
     def _load_playbooks(self):
-        """Load all YAML playbooks from the playbooks directory."""
+        """Load and validate all YAML playbooks from the playbooks directory."""
+        from ..models.playbook import PlaybookSchema
+        from pydantic import ValidationError
+        
         if not os.path.exists(self.playbooks_dir):
             logger.warning(f"Playbooks directory not found: {self.playbooks_dir}")
             return
@@ -29,10 +32,16 @@ class PlaybookService:
                 filepath = os.path.join(self.playbooks_dir, filename)
                 try:
                     with open(filepath, 'r') as f:
-                        playbook = yaml.safe_load(f)
-                        name = playbook.get('name', filename)
-                        self.playbooks[name] = playbook
-                        logger.info(f"Loaded playbook: {name}")
+                        raw_playbook = yaml.safe_load(f)
+                        
+                        # Validate against Pydantic schema
+                        try:
+                            playbook = PlaybookSchema(**raw_playbook)
+                            self.playbooks[playbook.name] = playbook.model_dump()
+                            logger.info(f"Loaded and validated playbook: {playbook.name}")
+                        except ValidationError as ve:
+                            logger.error(f"Validation error in playbook {filename}:\n{ve}")
+                            
                 except Exception as e:
                     logger.error(f"Failed to load playbook {filename}: {e}")
 
