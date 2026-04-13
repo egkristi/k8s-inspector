@@ -1,0 +1,10 @@
+# eBPF Requirements for k8s-inspector 3.0
+
+# Install dependencies for eBPF monitoring (Kepler / Cilium approach)
+# Note: For the Python backend to interface with eBPF data, we need the prometheus-api-client
+# or a custom gRPC stub if interacting directly with an eBPF agent.
+
+prometheus-api-client==0.5.5
+grpcio==1.62.0
+grpcio-tools==1.62.0
+protobuf==4.25.3
