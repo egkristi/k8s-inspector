@@ -1,4 +1,4 @@
-# k8s-inspector — Licensing
+# k8s-inspector 2.0 — Licensing
 
 k8s-inspector uses a **dual-license model**: open source for the community,
 commercial for enterprise use.
@@ -11,12 +11,12 @@ The k8s-inspector core is licensed under the
 [GNU Affero General Public License v3.0](LICENSES/AGPLv3.txt) (AGPLv3).
 
 This covers:
-- Transport layer (all drivers: WebSocket, QUIC, WireGuard, Reticulum, ...)
-- Noise XX end-to-end encryption
-- RPC executor and RPCPolicy engine
-- ConnectivityPolicy and negotiator
-- Metrics collection and outputs
-- Bootstrap and relay
+- The FastAPI Backend and Next.js Dashboard
+- Cost Optimization Engine (Waste detection, rightsizing)
+- Security Compliance Analyzer (CIS, PSS, RBAC)
+- ML Performance & Anomaly Detection
+- Playbook Auto-Remediation Engine
+- Single-tenant monitoring and insights
 
 **AGPLv3 in plain English:**
 - Free to use, modify, and distribute
@@ -30,7 +30,7 @@ This covers:
 
 A commercial license is required if you:
 
-1. Use k8s-inspector commercially with **>50 managed agents** and **>$5M revenue/year**
+1. Use k8s-inspector commercially with **>5 managed clusters** and **>$5M revenue/year**
 2. Distribute k8s-inspector inside a product **without** releasing your source under AGPLv3
 3. Offer k8s-inspector as a **hosted/managed service** without releasing modifications
 
@@ -40,7 +40,7 @@ A commercial license grants:
 - Priority support and SLA options
 
 See [LICENSES/COMMERCIAL.txt](LICENSES/COMMERCIAL.txt) for full terms.
-Contact: erling@rognsund.no or open an issue.
+Contact: hello@k8s-inspector.dev or open an issue.
 
 ---
 
@@ -48,21 +48,19 @@ Contact: erling@rognsund.no or open an issue.
 
 | Feature | AGPLv3 (Free) | Commercial |
 |---------|:---:|:---:|
-| All transport drivers (WG, QUIC, WSS, Reticulum, ...) | ✅ | ✅ |
-| Noise XX E2E encryption | ✅ | ✅ |
-| Fire-and-forget, fire-and-verify | ✅ | ✅ |
-| Task execution (ordered steps) | ✅ | ✅ |
-| RPCPolicy (command/path/service rules) | ✅ | ✅ |
-| ConnectivityPolicy (transport cascade) | ✅ | ✅ |
-| Metrics collection + InfluxDB/Prometheus output | ✅ | ✅ |
-| Bootstrap + relay | ✅ | ✅ |
-| Up to 50 agents, up to $5M revenue | ✅ | ✅ |
-| **Playbooks (multi-agent, rolling, rollback)** | — | ✅ |
-| **Desired state + drift detection** | — | ✅ |
-| **SecurityPolicy (immutable rules, blast radius)** | — | ✅ |
-| **RBAC + multi-tenant isolation** | — | ✅ |
-| **SSO / SAML integration** | — | ✅ |
-| **Compliance audit reporting** | — | ✅ |
+| Next.js Real-time Dashboard | ✅ | ✅ |
+| AI-Powered Root Cause Analysis | ✅ | ✅ |
+| Intelligent Cost Optimization | ✅ | ✅ |
+| Predictive Failure Detection | ✅ | ✅ |
+| Security Compliance (CIS, PSS) | ✅ | ✅ |
+| Playbook Auto-Remediation | ✅ | ✅ |
+| Multi-cluster Federated View | ✅ | ✅ |
+| Up to 5 clusters, up to $5M revenue | ✅ | ✅ |
+| **RBAC + Multi-tenant isolation** | — | ✅ |
+| **Enterprise SSO / SAML integration** | — | ✅ |
+| **Advanced Compliance Audit Reporting**| — | ✅ |
+| **GitOps Drift Detection & Auto-PRs** | — | ✅ |
+| **Predictive Capacity Planning** | — | ✅ |
 | **Air-gap / offline license** | — | ✅ |
 | **Priority support + SLA** | — | ✅ |
 
@@ -74,13 +72,11 @@ We chose AGPLv3 over MIT/Apache 2.0 deliberately:
 
 **The SaaS loophole:** MIT and Apache 2.0 allow cloud providers to offer k8s-inspector
 as a managed service, fork it, add proprietary features, and never contribute back.
-This happened to MongoDB (AWS DocumentDB), Elasticsearch (AWS OpenSearch), and
-Redis. AGPLv3 closes this loophole — if you run it as a service, your modifications
+AGPLv3 closes this loophole — if you run it as a service, your modifications
 must be open.
 
-**We commit to the core staying open:** The transport, crypto, RPC, and policy
-layers will remain AGPLv3 forever. We will never pull a HashiCorp (BSL switch) or
-a Redis (RSAL switch). Enterprise features that we build on top may be commercial,
+**We commit to the core staying open:** The core analysis engines and remediation workflows 
+will remain AGPLv3 forever. Enterprise features that we build on top may be commercial,
 but the foundation will not be.
 
 ---
@@ -96,11 +92,9 @@ The CLA grants us the right to:
 
 It does NOT transfer copyright ownership. You retain copyright over your contributions.
 
-CLA signature: [TODO — link when available]
-
 ---
 
 ## Questions?
 
-Open an issue: https://github.com/egkristi/klawagent/issues  
-Email: erling@rognsund.no
+Open an issue: https://github.com/egkristi/k8s-inspector/issues  
+Email: hello@k8s-inspector.dev

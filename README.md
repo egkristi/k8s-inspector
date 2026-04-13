@@ -3,7 +3,7 @@
 > **The Intelligent Kubernetes Inspector**  
 > Not just monitoring — *understanding*. Not just alerts — *answers*. Not just problems — *solutions*.
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![License: AGPLv3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://opensource.org/licenses/AGPL-3.0)
 [![GitHub stars](https://img.shields.io/github/stars/egkristi/k8s-inspector.svg)](https://github.com/egkristi/k8s-inspector/stargazers)
 
 ---
@@ -117,7 +117,11 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## 📄 License
 
-MIT License — see [LICENSE](LICENSE) for details.
+k8s-inspector uses a **dual-license model**:
+- **Open Source Core:** GNU AGPLv3
+- **Enterprise Features:** Commercial License
+
+See [LICENSING.md](LICENSING.md) for full details, features, and terms.
 
 ---
 
