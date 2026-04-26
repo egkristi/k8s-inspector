@@ -1,4 +1,4 @@
-# k8s-inspector 2.0 — Licensing
+# k8s-inspector — Licensing
 
 k8s-inspector uses a **dual-license model**: open source for the community,
 commercial for enterprise use.
@@ -7,17 +7,16 @@ commercial for enterprise use.
 
 ## Open Source Core — AGPLv3
 
-The k8s-inspector core is licensed under the
+k8s-inspector is licensed under the
 [GNU Affero General Public License v3.0](LICENSES/AGPLv3.txt) (AGPLv3).
 
 This covers:
-- The FastAPI Backend and Next.js Dashboard
-- Cost Optimization Engine (Waste detection, rightsizing)
-- Security Compliance Analyzer (CIS, PSS, RBAC)
-- ML Performance & Anomaly Detection
-- Playbook Auto-Remediation Engine
-- Single-tenant monitoring and insights
-
+- AI-powered root cause analysis
+- Intelligent cost optimization engine
+- Security compliance analyzer (CIS, PSS)
+- Predictive failure detection
+- Playbook auto-remediation
+- Real-time Next.js dashboard
 **AGPLv3 in plain English:**
 - Free to use, modify, and distribute
 - If you modify and run it as a service (SaaS), you must publish your modifications
@@ -30,17 +29,16 @@ This covers:
 
 A commercial license is required if you:
 
-1. Use k8s-inspector commercially with **>5 managed clusters** and **>$5M revenue/year**
+1. Use k8s-inspector commercially with **>5 managed clusters>50 users** and **>$5M revenue/year**
 2. Distribute k8s-inspector inside a product **without** releasing your source under AGPLv3
 3. Offer k8s-inspector as a **hosted/managed service** without releasing modifications
 
 A commercial license grants:
 - Usage rights without AGPLv3 obligations
-- Access to enterprise-only features (see below)
 - Priority support and SLA options
 
 See [LICENSES/COMMERCIAL.txt](LICENSES/COMMERCIAL.txt) for full terms.
-Contact: hello@k8s-inspector.dev or open an issue.
+Contact: erling@rognsund.no or open an issue.
 
 ---
 
@@ -48,22 +46,7 @@ Contact: hello@k8s-inspector.dev or open an issue.
 
 | Feature | AGPLv3 (Free) | Commercial |
 |---------|:---:|:---:|
-| Next.js Real-time Dashboard | ✅ | ✅ |
-| AI-Powered Root Cause Analysis | ✅ | ✅ |
-| Intelligent Cost Optimization | ✅ | ✅ |
-| Predictive Failure Detection | ✅ | ✅ |
-| Security Compliance (CIS, PSS) | ✅ | ✅ |
-| Playbook Auto-Remediation | ✅ | ✅ |
-| Multi-cluster Federated View | ✅ | ✅ |
-| Up to 5 clusters, up to $5M revenue | ✅ | ✅ |
-| **RBAC + Multi-tenant isolation** | — | ✅ |
-| **Enterprise SSO / SAML integration** | — | ✅ |
-| **Advanced Compliance Audit Reporting**| — | ✅ |
-| **GitOps Drift Detection & Auto-PRs** | — | ✅ |
-| **Predictive Capacity Planning** | — | ✅ |
-| **Air-gap / offline license** | — | ✅ |
-| **Priority support + SLA** | — | ✅ |
-
+| AI-powered root cause analysis | ✅ | ✅ |\n| Intelligent cost optimization engine | ✅ | ✅ |\n| Security compliance analyzer (CIS, PSS) | ✅ | ✅ |\n| Predictive failure detection | ✅ | ✅ |\n| Playbook auto-remediation | ✅ | ✅ |\n| Real-time Next.js dashboard | ✅ | ✅ |\n| **RBAC and multi-tenant isolation** | — | ✅ |\n| **Enterprise SSO / SAML integration** | — | ✅ |\n| **Advanced compliance audit reporting** | — | ✅ |\n| **GitOps drift detection and auto-PRs** | — | ✅ |\n| **Predictive capacity planning** | — | ✅ |\n| **Priority support and SLA** | — | ✅ |\n
 ---
 
 ## Why AGPLv3?
@@ -75,15 +58,15 @@ as a managed service, fork it, add proprietary features, and never contribute ba
 AGPLv3 closes this loophole — if you run it as a service, your modifications
 must be open.
 
-**We commit to the core staying open:** The core analysis engines and remediation workflows 
-will remain AGPLv3 forever. Enterprise features that we build on top may be commercial,
+**We commit to the core staying open:** The core will remain AGPLv3 forever.
+Enterprise features that we build on top may be commercial,
 but the foundation will not be.
 
 ---
 
 ## Contributor License Agreement (CLA)
 
-Contributors to k8s-inspector must sign a Contributor License Agreement (CLA).
+Contributors must sign a Contributor License Agreement (CLA).
 This allows us to offer the commercial license while accepting community contributions.
 
 The CLA grants us the right to:
@@ -96,5 +79,5 @@ It does NOT transfer copyright ownership. You retain copyright over your contrib
 
 ## Questions?
 
-Open an issue: https://github.com/egkristi/k8s-inspector/issues  
-Email: hello@k8s-inspector.dev
+Open an issue: https://github.com/egkristi/k8s-inspector/issues
+Email: erling@rognsund.no
