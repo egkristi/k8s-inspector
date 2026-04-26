@@ -15,12 +15,15 @@ class Settings(BaseSettings):
     API_PREFIX: str = "/api/v2"
     
     # Database
-    DATABASE_URL: str = "postgresql://postgres:postgres@localhost:5432/k8s_inspector"
+    DATABASE_URL: str = "postgresql+asyncpg://postgres:postgres@localhost:5432/k8s_inspector"
     DATABASE_POOL_SIZE: int = 10
     DATABASE_MAX_OVERFLOW: int = 20
     
     # Redis
     REDIS_URL: str = "redis://localhost:6379/0"
+    
+    # CORS
+    CORS_ORIGINS: List[str] = ["http://localhost:3000"]
     
     # Kubernetes
     KUBECONFIG_PATH: Optional[str] = None  # Uses default ~/.kube/config if None

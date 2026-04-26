@@ -60,23 +60,6 @@ class AgenticAIService:
         except Exception as e:
             logger.error(f"Failed to generate LLM cost explanation: {e}")
             return {"status": "error", "message": str(e)}
-        """Constructs a context-rich prompt for the LLM."""
-        return f"""
-        You are an expert Kubernetes reliability engineer. Analyze the following failure context and provide a concise, plain-English explanation of the root cause, followed by a concrete recommendation to fix it.
-
-        Resource: {context.get('kind', 'Unknown')} {context.get('name', 'Unknown')} in namespace {context.get('namespace', 'default')}
-        Status: {context.get('status', 'Unknown')}
-
-        Recent Events:
-        {json.dumps(events, indent=2)}
-
-        Recent Logs:
-        {logs[-2000:]}  # Last 2000 chars
-
-        Format your response as:
-        1. Root Cause Analysis
-        2. Recommended Fix
-        """
 
     def _build_prompt(self, context: Dict[str, Any], logs: str, events: list) -> str:
         """Constructs a context-rich prompt for the LLM."""

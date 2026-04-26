@@ -5,8 +5,13 @@ from typing import Dict, List, Optional, Any
 from datetime import datetime, timedelta
 from kubernetes import client, config
 from kubernetes.client.rest import ApiException
-from openshift.dynamic import DynamicClient
 import logging
+
+try:
+    from openshift.dynamic import DynamicClient
+    HAS_OPENSHIFT = True
+except ImportError:
+    HAS_OPENSHIFT = False
 
 from ..core.config import settings
 
@@ -25,11 +30,11 @@ class ClusterService:
         async with self._lock:
             if cluster_id not in self.clients:
                 try:
-                    # Load kubeconfig
+                    # Load kubeconfig (sync call, run in thread)
                     if kubeconfig_path:
-                        config.load_kube_config(config_file=kubeconfig_path)
+                        await asyncio.to_thread(config.load_kube_config, config_file=kubeconfig_path)
                     else:
-                        config.load_kube_config()
+                        await asyncio.to_thread(config.load_kube_config)
                     
                     # Create clients
                     api_client = client.ApiClient()
@@ -38,16 +43,19 @@ class ClusterService:
                     
                     # Try OpenShift dynamic client
                     dynamic_client = None
-                    try:
-                        dynamic_client = DynamicClient(api_client)
-                        # Test OpenShift-specific API
-                        dynamic_client.resources.get(
-                            api_version='config.openshift.io/v1',
-                            kind='ClusterOperator'
-                        )
-                        cluster_type = "openshift"
-                    except:
-                        cluster_type = "kubernetes"
+                    cluster_type = "kubernetes"
+                    if HAS_OPENSHIFT:
+                        try:
+                            dynamic_client = DynamicClient(api_client)
+                            # Test OpenShift-specific API
+                            await asyncio.to_thread(
+                                dynamic_client.resources.get,
+                                api_version='config.openshift.io/v1',
+                                kind='ClusterOperator',
+                            )
+                            cluster_type = "openshift"
+                        except Exception:
+                            cluster_type = "kubernetes"
                     
                     self.clients[cluster_id] = {
                         "v1": v1,
@@ -71,7 +79,7 @@ class ClusterService:
         """Get Kubernetes version."""
         try:
             v1 = cluster_client["v1"]
-            version_info = v1.get_api_versions()
+            version_info = await asyncio.to_thread(v1.get_api_versions)
             return version_info.git_version
         except Exception as e:
             logger.error(f"Failed to get cluster version: {e}")
@@ -81,7 +89,7 @@ class ClusterService:
         """Get all nodes in cluster."""
         try:
             v1 = cluster_client["v1"]
-            nodes = v1.list_node()
+            nodes = await asyncio.to_thread(v1.list_node)
             
             return [
                 {
@@ -161,9 +169,9 @@ class ClusterService:
             v1 = cluster_client["v1"]
             
             if namespace:
-                pods = v1.list_namespaced_pod(namespace=namespace)
+                pods = await asyncio.to_thread(v1.list_namespaced_pod, namespace=namespace)
             else:
-                pods = v1.list_pod_for_all_namespaces()
+                pods = await asyncio.to_thread(v1.list_pod_for_all_namespaces)
             
             return [
                 {
@@ -209,7 +217,7 @@ class ClusterService:
         """Get all namespaces."""
         try:
             v1 = cluster_client["v1"]
-            namespaces = v1.list_namespace()
+            namespaces = await asyncio.to_thread(v1.list_namespace)
             
             return [
                 {
@@ -230,11 +238,12 @@ class ClusterService:
         
         try:
             dynamic = cluster_client["dynamic"]
-            operators = dynamic.resources.get(
+            operators = await asyncio.to_thread(
+                dynamic.resources.get,
                 api_version='config.openshift.io/v1',
-                kind='ClusterOperator'
+                kind='ClusterOperator',
             )
-            operator_list = operators.get()
+            operator_list = await asyncio.to_thread(operators.get)
             
             return [
                 {

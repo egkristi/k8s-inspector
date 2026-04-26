@@ -10,7 +10,7 @@ from typing import Dict, List
 
 from .core.config import settings
 from .core.database import init_db, close_db
-from .api import clusters, insights, cost, security
+from .api import clusters, insights, cost, security, webhooks
 from .services.cluster_service import cluster_service
 
 logging.basicConfig(level=logging.INFO)
@@ -48,7 +48,7 @@ app = FastAPI(
 # CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Configure for production
+    allow_origins=settings.CORS_ORIGINS,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -59,6 +59,7 @@ app.include_router(clusters.router, prefix=f"{settings.API_PREFIX}/clusters", ta
 app.include_router(insights.router, prefix=f"{settings.API_PREFIX}/insights", tags=["Insights"])
 app.include_router(cost.router, prefix=f"{settings.API_PREFIX}/cost", tags=["Cost"])
 app.include_router(security.router, prefix=f"{settings.API_PREFIX}/security", tags=["Security"])
+app.include_router(webhooks.router, prefix=f"{settings.API_PREFIX}/webhooks", tags=["Webhooks"])
 
 
 @app.get("/")
